@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+import Slider from './src/Slider';
+import { LoadAssets } from './src/components';
+
+const fonts = {
+  "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
+  "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
+  "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
+};
+
+const AppStack = createStackNavigator();
+const AppNavigator = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello dude. Start working on now.</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppStack.Navigator headerMode="none">
+      <AppStack.Screen name="Slider" component={Slider} />
+    </AppStack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <LoadAssets {...{ fonts }}>
+      <AppNavigator />
+    </LoadAssets>
+  );
+}
