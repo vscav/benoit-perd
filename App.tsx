@@ -1,8 +1,9 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { ThemeProvider } from "@shopify/restyle";
 
 import Slider from "./src/Slider";
-import { LoadAssets } from "./src/components";
+import { LoadAssets, theme } from "./src/components";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -21,8 +22,10 @@ const AppNavigator = () => {
 
 export default function App() {
   return (
-    <LoadAssets {...{ fonts }}>
-      <AppNavigator />
-    </LoadAssets>
+    <ThemeProvider {...{ theme }}>
+      <LoadAssets {...{ fonts }}>
+        <AppNavigator />
+      </LoadAssets>
+    </ThemeProvider>
   );
 }
