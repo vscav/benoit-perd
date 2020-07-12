@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
 });
 
 interface SlideProps {
-  label: string;
+  title: string;
   right?: boolean;
 }
 
-const Slide = ({ label, right }: SlideProps) => {
+const Slide = ({ title, right }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
     { translateX: right ? width / 2 - 50 : -width / 2 + 50 },
@@ -36,7 +36,7 @@ const Slide = ({ label, right }: SlideProps) => {
   return (
     <View style={styles.container}>
       <View style={[styles.titleContainer, { transform }]}>
-        <Text style={styles.title}>{label}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
     </View>
   );
