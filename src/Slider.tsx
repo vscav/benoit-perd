@@ -123,13 +123,28 @@ const Slider = () => {
             {slides.map(({ subtitle, description }, index) => (
               <Subslide
                 key={index}
-                onPress={() => {
+                // onPress={() => {
+                //   if (scroll.current) {
+                //     scroll.current
+                //       .getNode()
+                //       .scrollTo({ x: width * (index + 1), animated: true });
+                //   }
+                // }}
+                next={() => {
                   if (scroll.current) {
                     scroll.current
                       .getNode()
                       .scrollTo({ x: width * (index + 1), animated: true });
                   }
                 }}
+                previous={() => {
+                  if (scroll.current) {
+                    scroll.current
+                      .getNode()
+                      .scrollTo({ x: width * (index - 1), animated: true });
+                  }
+                }}
+                first={index === 0}
                 last={index === slides.length - 1}
                 {...{ subtitle, description }}
               />
