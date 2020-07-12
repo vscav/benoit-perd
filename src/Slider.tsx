@@ -1,10 +1,43 @@
 import React from "react";
-import { View } from "react-native";
+import { Dimensions, View, StyleSheet } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
-interface ComponentNameProps {}
+import Slide from "./Slide";
 
-const ComponentName = () => {
-    return <View style={{ flex: 1, backgroundColor: "#778beb" }}/>;
-}
+const { width, height } = Dimensions.get("window");
 
-export default ComponentName;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  slider: {
+    height: 0.61 * height,
+  },
+  footer: {
+    flex: 1,
+  },
+});
+
+const Slider = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.slider}>
+        <ScrollView
+          horizontal
+          snapToInterval={width}
+          decelerationRate="fast"
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+        >
+          <Slide label="#*!?" />
+          <Slide label="@&!*" right />
+          <Slide label="**!@" />
+          <Slide label="@$*!#" right />
+        </ScrollView>
+      </View>
+      <View style={styles.footer}></View>
+    </View>
+  );
+};
+
+export default Slider;

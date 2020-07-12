@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import * as React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Slider from './src/Slider';
-import { LoadAssets } from './src/components';
+import Slider from "./src/Slider";
+import { LoadAssets } from "./src/components";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -17,7 +17,7 @@ const AppNavigator = () => {
       <AppStack.Screen name="Slider" component={Slider} />
     </AppStack.Navigator>
   );
-}
+};
 
 export default function App() {
   return (
