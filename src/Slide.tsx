@@ -1,7 +1,7 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet, View } from "react-native";
 
-import { Text } from "./components";
+import { Button, Text } from "./components";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: "flex-end",
   },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginBottom: BORDER_RADIUS,
+  },
   picture: {
     ...StyleSheet.absoluteFillObject,
     width: undefined,
@@ -30,15 +36,20 @@ const styles = StyleSheet.create({
 
 interface SlideProps {
   title: string;
-  right?: boolean;
+  //right?: boolean;
   picture: number;
+  play: () => void;
 }
 
-const Slide = ({ title, right, picture }: SlideProps) => {
+//const Slide = ({ title, right, picture }: SlideProps) => {
+const Slide = ({ title, picture, play }: SlideProps) => {
+  console.log("slide render");
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
-    { translateX: right ? width / 2 - 50 : -width / 2 + 50 },
-    { rotate: right ? "-90deg" : "90deg" },
+    //{ translateX: right ? width / 2 - 50 : -width / 2 + 50 },
+    //{ rotate: right ? "-90deg" : "90deg" },
+    { translateX: -width / 2 + 50 },
+    { rotate: "90deg" },
   ];
   return (
     <View style={styles.container}>
@@ -47,6 +58,9 @@ const Slide = ({ title, right, picture }: SlideProps) => {
       </View>
       <View style={[styles.titleContainer, { transform }]}>
         <Text variant="hero">{title}</Text>
+      </View>
+      <View style={styles.overlay}>
+        <Button label="Écouter" variant="primary" onPress={play} />
       </View>
     </View>
   );
