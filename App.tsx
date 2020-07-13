@@ -41,7 +41,7 @@ export default function App() {
   useEffect(() => {
     Animated.timing(loadingProgress, {
       toValue: 100,
-      duration: 1500,
+      duration: 1000,
       useNativeDriver: true,
       delay: 3000,
     }).start(() => {
@@ -53,7 +53,9 @@ export default function App() {
     <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fdcb6e" }]} />
   );
   const whiteLayer = animationDone ? null : (
-    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fff" }]} />
+    <View
+      style={[StyleSheet.absoluteFill, { backgroundColor: theme.colors.text }]}
+    />
   );
   const imageScale = {
     transform: [
