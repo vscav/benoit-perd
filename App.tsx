@@ -12,6 +12,7 @@ const fonts = {
 };
 
 const AppStack = createStackNavigator();
+
 const AppNavigator = () => {
   return (
     <AppStack.Navigator headerMode="none">

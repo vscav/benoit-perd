@@ -38,12 +38,11 @@ interface SlideProps {
   title: string;
   //right?: boolean;
   picture: number;
-  play: () => void;
+  onPress: () => void;
 }
 
 //const Slide = ({ title, right, picture }: SlideProps) => {
-const Slide = ({ title, picture, play }: SlideProps) => {
-  console.log("slide render");
+const Slide = ({ title, picture, onPress }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
     //{ translateX: right ? width / 2 - 50 : -width / 2 + 50 },
@@ -60,7 +59,7 @@ const Slide = ({ title, picture, play }: SlideProps) => {
         <Text variant="hero">{title}</Text>
       </View>
       <View style={styles.overlay}>
-        <Button label="Écouter" variant="primary" onPress={play} />
+        <Button label="Écouter" variant="primary" {...{ onPress }} />
       </View>
     </View>
   );

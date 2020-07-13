@@ -1,18 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Dimensions, View, StyleSheet } from "react-native";
-import {
-  useValue,
-  onScrollEvent,
-  interpolateColor,
-  useScrollHandler,
-} from "react-native-redash";
+import { interpolateColor, useScrollHandler } from "react-native-redash";
 import Animated, { multiply, divide } from "react-native-reanimated";
+import { Audio } from "expo-av";
 
 import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
+
+const soundObject = new Audio.Sound();
 
 const styles = StyleSheet.create({
   container: {
@@ -80,6 +78,7 @@ const slides = [
 ];
 
 const Slider = () => {
+  const [playingStatus, setPlayingStatus] = useState("stop");
   const scroll = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
@@ -99,12 +98,34 @@ const Slider = () => {
           {...scrollHandler}
         >
           {slides.map(({ title, picture }, index) => (
-            // <Slide key={index} right={!!(index % 2)} {...{ title, picture }} />
             <Slide
               key={index}
               {...{ title, picture }}
-              play={() => {
-                console.log("play function called");
+              onPress={async () => {
+                try {
+                  if (playingStatus === "playing") {
+                    await soundObject.stopAsync();
+                    await soundObject.unloadAsync();
+                    setPlayingStatus("stop");
+                  } else {
+                    let source = slides[index].sound;
+                    await soundObject.loadAsync(source);
+                    setPlayingStatus("playing");
+                    await soundObject
+                      .playAsync()
+                      .then(async (playbackStatus) => {
+                        setTimeout(() => {
+                          soundObject.unloadAsync();
+                          setPlayingStatus("stop");
+                        }, playbackStatus.durationMillis);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }
+                } catch (error) {
+                  console.log(error);
+                }
               }}
             />
           ))}
@@ -134,13 +155,6 @@ const Slider = () => {
             {slides.map(({ subtitle, description }, index) => (
               <Subslide
                 key={index}
-                // onPress={() => {
-                //   if (scroll.current) {
-                //     scroll.current
-                //       .getNode()
-                //       .scrollTo({ x: width * (index + 1), animated: true });
-                //   }
-                // }}
                 next={() => {
                   if (scroll.current) {
                     scroll.current
