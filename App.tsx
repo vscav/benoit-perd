@@ -50,7 +50,7 @@ export default function App() {
   });
 
   const colorLayer = animationDone ? null : (
-    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fdcb6e" }]} />
+    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#f89e4c" }]} />
   );
   const whiteLayer = animationDone ? null : (
     <View

@@ -96,6 +96,18 @@ const Slider = () => {
           showsHorizontalScrollIndicator={false}
           bounces={false}
           {...scrollHandler}
+          // pinchGestureEnabled
+          onScrollEndDrag={async () => {
+            try {
+              if (playingStatus === "playing") {
+                await soundObject.stopAsync();
+                await soundObject.unloadAsync();
+                setPlayingStatus("stop");
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }}
         >
           {slides.map(({ title, picture }, index) => (
             <Slide
@@ -157,16 +169,18 @@ const Slider = () => {
                 key={index}
                 next={() => {
                   if (scroll.current) {
-                    scroll.current
-                      .getNode()
-                      .scrollTo({ x: width * (index + 1), animated: true });
+                    scroll.current.getNode().scrollTo({
+                      x: width * (index + 1),
+                      animated: true,
+                    });
                   }
                 }}
                 previous={() => {
                   if (scroll.current) {
-                    scroll.current
-                      .getNode()
-                      .scrollTo({ x: width * (index - 1), animated: true });
+                    scroll.current.getNode().scrollTo({
+                      x: width * (index - 1),
+                      animated: true,
+                    });
                   }
                 }}
                 first={index === 0}
