@@ -151,20 +151,40 @@ const Slider = () => {
             {slides.map(({ subtitle, description }, index) => (
               <Subslide
                 key={index}
-                next={() => {
-                  if (scroll.current) {
-                    scroll.current.getNode().scrollTo({
-                      x: width * (index + 1),
-                      animated: true,
-                    });
+                next={async () => {
+                  try {
+                    if (scroll.current) {
+                      scroll.current.getNode().scrollTo({
+                        x: width * (index + 1),
+                        animated: true,
+                      });
+                    }
+                    if (playingStatus === "playing") {
+                      await soundObject.stopAsync();
+                      await soundObject.unloadAsync();
+                      setPlayingStatus("stop");
+                      setDisabled(true);
+                    }
+                  } catch (error) {
+                    console.log(error);
                   }
                 }}
-                previous={() => {
-                  if (scroll.current) {
-                    scroll.current.getNode().scrollTo({
-                      x: width * (index - 1),
-                      animated: true,
-                    });
+                previous={async () => {
+                  try {
+                    if (scroll.current) {
+                      scroll.current.getNode().scrollTo({
+                        x: width * (index - 1),
+                        animated: true,
+                      });
+                    }
+                    if (playingStatus === "playing") {
+                      await soundObject.stopAsync();
+                      await soundObject.unloadAsync();
+                      setPlayingStatus("stop");
+                      setDisabled(true);
+                    }
+                  } catch (error) {
+                    console.log(error);
                   }
                 }}
                 first={index === 0}
