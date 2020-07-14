@@ -5,6 +5,7 @@ import Animated, { multiply, divide } from "react-native-reanimated";
 import { Audio } from "expo-av";
 
 import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
+
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 
@@ -42,12 +43,17 @@ const styles = StyleSheet.create({
 
 const Slider = () => {
   const [playingStatus, setPlayingStatus] = useState("stop");
+  const [disabled, setDisabled] = useState(true);
+
   const scroll = useRef<Animated.ScrollView>(null);
+
   const { scrollHandler, x } = useScrollHandler();
+
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
     outputRange: slides.map((slide) => slide.color),
   });
+
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
@@ -66,6 +72,7 @@ const Slider = () => {
                 await soundObject.stopAsync();
                 await soundObject.unloadAsync();
                 setPlayingStatus("stop");
+                setDisabled(true);
               }
             } catch (error) {
               console.log(error);
@@ -76,22 +83,25 @@ const Slider = () => {
             <Slide
               key={index}
               {...{ title, picture }}
+              active={disabled}
               start={async () => {
                 try {
-                  if (playingStatus === "playing") {
-                    await soundObject.stopAsync();
-                    await soundObject.unloadAsync();
-                    setPlayingStatus("stop");
-                  }
+                  // if (playingStatus === "playing") {
+                  //   await soundObject.stopAsync();
+                  //   await soundObject.unloadAsync();
+                  //   setPlayingStatus("stop");
+                  // }
                   const source = slides[index].sound;
                   await soundObject.loadAsync(source);
                   setPlayingStatus("playing");
+                  setDisabled(false);
                   await soundObject
                     .playAsync()
                     .then(async (playbackStatus) => {
                       setTimeout(() => {
                         soundObject.unloadAsync();
                         setPlayingStatus("stop");
+                        setDisabled(true);
                       }, playbackStatus.durationMillis);
                     })
                     .catch((error) => {
@@ -107,6 +117,7 @@ const Slider = () => {
                     await soundObject.stopAsync();
                     await soundObject.unloadAsync();
                     setPlayingStatus("stop");
+                    setDisabled(true);
                   }
                 } catch (error) {
                   console.log(error);

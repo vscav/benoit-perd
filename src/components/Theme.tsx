@@ -6,6 +6,7 @@ const theme: BaseTheme = {
     title: "#0c0d34",
     text: "rgba(12, 13, 52, .7)",
     white: "#fff",
+    disabled: "rgba(12, 13, 52, .5)",
   },
   spacing: {
     s: 8,

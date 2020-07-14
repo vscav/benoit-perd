@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@shopify/restyle";
@@ -19,15 +19,27 @@ interface IconButtonProps {
   icon: string;
   variant: "default" | "primary";
   size: number;
+  active: boolean;
   onPress: () => void;
 }
 
-const IconButton = ({ icon, variant, size, onPress }: IconButtonProps) => {
+const IconButton = ({
+  icon,
+  variant,
+  size,
+  active,
+  onPress,
+}: IconButtonProps) => {
   const theme = useTheme<Theme>();
-  const backgroundColor =
+  let backgroundColor =
     variant === "primary" ? theme.colors.primary : theme.colors.text;
+  backgroundColor = active ? theme.colors.disabled : backgroundColor;
   const color = variant === "primary" ? theme.colors.white : theme.colors.white;
-  return (
+  return active ? (
+    <View style={[styles.button, { backgroundColor }]}>
+      <FontAwesome name={icon} size={size} color={color} />
+    </View>
+  ) : (
     <RectButton style={[styles.button, { backgroundColor }]} {...{ onPress }}>
       <FontAwesome name={icon} size={size} color={color} />
     </RectButton>

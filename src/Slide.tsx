@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
 interface SlideProps {
   title: string;
   picture: number;
+  active: boolean;
   start: () => void;
   stop: () => void;
 }
 
-const Slide = ({ title, picture, start, stop }: SlideProps) => {
+const Slide = ({ title, picture, active, start, stop }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
     { translateX: -width / 2 + 50 },
@@ -62,8 +63,19 @@ const Slide = ({ title, picture, start, stop }: SlideProps) => {
       </View>
       <View style={styles.overlay}>
         <View style={styles.controlsContainer}>
-          <Button label="Écouter" variant="primary" onPress={start} />
-          <IconButton icon="stop" variant="primary" size={14} onPress={stop} />
+          <Button
+            label="Écouter"
+            variant="primary"
+            onPress={start}
+            active={!active}
+          />
+          <IconButton
+            icon="stop"
+            variant="primary"
+            size={14}
+            onPress={stop}
+            active={active}
+          />
         </View>
       </View>
     </View>
