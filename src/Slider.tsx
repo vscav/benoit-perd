@@ -76,27 +76,37 @@ const Slider = () => {
             <Slide
               key={index}
               {...{ title, picture }}
-              onPress={async () => {
+              start={async () => {
                 try {
                   if (playingStatus === "playing") {
                     await soundObject.stopAsync();
                     await soundObject.unloadAsync();
                     setPlayingStatus("stop");
-                  } else {
-                    let source = slides[index].sound;
-                    await soundObject.loadAsync(source);
-                    setPlayingStatus("playing");
-                    await soundObject
-                      .playAsync()
-                      .then(async (playbackStatus) => {
-                        setTimeout(() => {
-                          soundObject.unloadAsync();
-                          setPlayingStatus("stop");
-                        }, playbackStatus.durationMillis);
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                      });
+                  }
+                  const source = slides[index].sound;
+                  await soundObject.loadAsync(source);
+                  setPlayingStatus("playing");
+                  await soundObject
+                    .playAsync()
+                    .then(async (playbackStatus) => {
+                      setTimeout(() => {
+                        soundObject.unloadAsync();
+                        setPlayingStatus("stop");
+                      }, playbackStatus.durationMillis);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                } catch (error) {
+                  console.log(error);
+                }
+              }}
+              stop={async () => {
+                try {
+                  if (playingStatus === "playing") {
+                    await soundObject.stopAsync();
+                    await soundObject.unloadAsync();
+                    setPlayingStatus("stop");
                   }
                 } catch (error) {
                   console.log(error);

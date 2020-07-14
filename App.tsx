@@ -37,9 +37,9 @@ export default function App() {
   useEffect(() => {
     Animated.timing(loadingProgress, {
       toValue: 100,
-      duration: 1000,
+      duration: 1200,
       useNativeDriver: true,
-      delay: 3000,
+      delay: 2000,
     }).start(() => {
       setAnimationDone(true);
     });

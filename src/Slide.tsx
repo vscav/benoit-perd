@@ -1,7 +1,7 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet, View } from "react-native";
 
-import { Button, Text } from "./components";
+import { Button, IconButton, Text } from "./components";
 
 const { width, height } = Dimensions.get("window");
 
@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: BORDER_RADIUS,
   },
+  controlsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: width / 2,
+  },
   picture: {
     ...StyleSheet.absoluteFillObject,
     width: undefined,
@@ -36,17 +41,14 @@ const styles = StyleSheet.create({
 
 interface SlideProps {
   title: string;
-  //right?: boolean;
   picture: number;
-  onPress: () => void;
+  start: () => void;
+  stop: () => void;
 }
 
-//const Slide = ({ title, right, picture }: SlideProps) => {
-const Slide = ({ title, picture, onPress }: SlideProps) => {
+const Slide = ({ title, picture, start, stop }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
-    //{ translateX: right ? width / 2 - 50 : -width / 2 + 50 },
-    //{ rotate: right ? "-90deg" : "90deg" },
     { translateX: -width / 2 + 50 },
     { rotate: "90deg" },
   ];
@@ -59,7 +61,10 @@ const Slide = ({ title, picture, onPress }: SlideProps) => {
         <Text variant="hero">{title}</Text>
       </View>
       <View style={styles.overlay}>
-        <Button label="Écouter" variant="primary" {...{ onPress }} />
+        <View style={styles.controlsContainer}>
+          <Button label="Écouter" variant="primary" onPress={start} />
+          <IconButton icon="stop" variant="primary" size={14} onPress={stop} />
+        </View>
       </View>
     </View>
   );

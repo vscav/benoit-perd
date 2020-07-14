@@ -31,7 +31,6 @@ interface SubslideProps {
   description: string;
   first?: boolean;
   last?: boolean;
-  //onPress: () => void;
   previous: () => void;
   next: () => void;
 }
@@ -41,7 +40,6 @@ const Subslide = ({
   description,
   first,
   last,
-  //onPress,
   previous,
   next,
 }: SubslideProps) => {
@@ -55,11 +53,9 @@ const Subslide = ({
       </Text>
       <View style={styles.controlsContainer}>
         {!first ? (
-          // <Button label="Précédent" variant="default" {...{ onPress }} />
           <Button label="Précédent" variant="default" onPress={previous} />
         ) : null}
         {!last ? (
-          // <Button label="Suivant" variant="default" {...{ onPress }} />
           <Button label="Suivant" variant="default" onPress={next} />
         ) : null}
       </View>

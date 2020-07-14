@@ -1,45 +1,39 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@shopify/restyle";
 import { Theme } from "./Theme";
 
 const styles = StyleSheet.create({
-  container: {
+  button: {
+    width: 50,
     height: 50,
-    width: 145,
     borderRadius: 50 / 2,
-    justifyContent: "center",
     alignItems: "center",
-  },
-  label: {
-    fontFamily: "SFProText-Regular",
-    fontSize: 15,
-    textAlign: "center",
+    justifyContent: "center",
   },
 });
 
-interface ButtonProps {
-  label: string;
+interface IconButtonProps {
+  icon: string;
   variant: "default" | "primary";
+  size: number;
   onPress: () => void;
 }
 
-const Button = ({ variant, label, onPress }: ButtonProps) => {
+const IconButton = ({ icon, variant, size, onPress }: IconButtonProps) => {
   const theme = useTheme<Theme>();
   const backgroundColor =
     variant === "primary" ? theme.colors.primary : theme.colors.text;
   const color = variant === "primary" ? theme.colors.white : theme.colors.white;
   return (
-    <RectButton
-      style={[styles.container, { backgroundColor }]}
-      {...{ onPress }}
-    >
-      <Text style={[styles.label, { color }]}>{label}</Text>
+    <RectButton style={[styles.button, { backgroundColor }]} {...{ onPress }}>
+      <FontAwesome name={icon} size={size} color={color} />
     </RectButton>
   );
 };
 
-Button.defaultProps = { variant: "default" };
+IconButton.defaultProps = { variant: "default" };
 
-export default Button;
+export default IconButton;
