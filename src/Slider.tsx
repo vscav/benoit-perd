@@ -9,12 +9,14 @@ import Animated, {
 } from "react-native-reanimated";
 import { Audio } from "expo-av";
 
-import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
+// import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
+import Slide, { SLIDE_HEIGHT } from "./Slide";
 
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 
 import { slides } from "./store";
+import { theme } from "./components";
 
 const { width } = Dimensions.get("window");
 
@@ -27,13 +29,13 @@ const styles = StyleSheet.create({
   },
   slider: {
     height: SLIDE_HEIGHT,
-    borderBottomRightRadius: BORDER_RADIUS,
+    borderBottomRightRadius: theme.borderRadii.xl,
   },
   underlay: {
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "flex-end",
-    borderBottomRightRadius: BORDER_RADIUS,
+    borderBottomRightRadius: theme.borderRadii.xl,
     overflow: "hidden",
   },
   footer: {
@@ -42,11 +44,11 @@ const styles = StyleSheet.create({
   footerContent: {
     flex: 1,
     backgroundColor: "#fff",
-    borderTopLeftRadius: BORDER_RADIUS,
+    borderTopLeftRadius: theme.borderRadii.xl,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    height: BORDER_RADIUS,
+    height: theme.borderRadii.xl,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -84,9 +86,10 @@ const Slider = () => {
               <Image
                 source={picture.src}
                 style={{
-                  width: width - BORDER_RADIUS,
+                  width: width - theme.borderRadii.xl,
                   height:
-                    (width - BORDER_RADIUS) * (picture.height / picture.width),
+                    (width - theme.borderRadii.xl) *
+                    (picture.height / picture.width),
                 }}
               />
             </Animated.View>
