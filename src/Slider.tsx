@@ -86,10 +86,8 @@ const Slider = () => {
               <Image
                 source={picture.src}
                 style={{
-                  width: width - theme.borderRadii.xl,
-                  height:
-                    (width - theme.borderRadii.xl) *
-                    (picture.height / picture.width),
+                  width: width,
+                  height: width,
                 }}
               />
             </Animated.View>

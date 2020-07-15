@@ -7,8 +7,8 @@ export const slides = [
     color: "#f89e4c",
     picture: {
       src: require("../../../assets/images/1.png"),
-      width: 1763,
-      height: 1671,
+      width: 3000,
+      height: 2622,
     },
     sound: require("../../../assets/sounds/1.wav"),
   },
@@ -20,8 +20,8 @@ export const slides = [
     color: "#f46e38",
     picture: {
       src: require("../../../assets/images/2.png"),
-      width: 940,
-      height: 647,
+      width: 3000,
+      height: 1873,
     },
     sound: require("../../../assets/sounds/2.wav"),
   },
@@ -33,8 +33,8 @@ export const slides = [
     color: "#f04647",
     picture: {
       src: require("../../../assets/images/3.png"),
-      width: 940,
-      height: 669,
+      width: 3000,
+      height: 2364,
     },
     sound: require("../../../assets/sounds/3.wav"),
   },
@@ -46,8 +46,8 @@ export const slides = [
     color: "#582841",
     picture: {
       src: require("../../../assets/images/4.png"),
-      width: 840,
-      height: 618,
+      width: 3000,
+      height: 1826,
     },
     sound: require("../../../assets/sounds/4.wav"),
   },
