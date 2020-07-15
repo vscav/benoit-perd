@@ -1,11 +1,12 @@
-import { BaseTheme, createText } from "@shopify/restyle";
+import { createText } from "@shopify/restyle";
 
-const theme: BaseTheme = {
+const theme = {
   colors: {
     primary: "#2cb9b0",
     title: "#0c0d34",
     text: "rgba(12, 13, 52, .7)",
     white: "#fff",
+    grey: "rgba(12, 13, 52, .05)",
     disabled: "rgba(12, 13, 52, .5)",
   },
   spacing: {
@@ -18,25 +19,30 @@ const theme: BaseTheme = {
     hero: {
       fontSize: 80,
       lineHeight: 80,
-      fontFamily: "SFProText-Bold",
+      fontFamily: "SFProDisplay-Bold",
       color: "white",
       textAlign: "center",
     },
     title1: {
       fontSize: 28,
-      fontFamily: "SFProText-Semibold",
+      fontFamily: "SFProDisplay-Semibold",
       color: "title",
     },
     title2: {
       fontSize: 24,
       lineHeight: 30,
-      fontFamily: "SFProText-Semibold",
+      fontFamily: "SFProDisplay-Semibold",
       color: "title",
     },
     body: {
       fontSize: 16,
       lineHeight: 24,
-      fontFamily: "SFProText-Regular",
+      fontFamily: "SFProDisplay-Regular",
+      color: "text",
+    },
+    button: {
+      fontSize: 15,
+      fontFamily: "SFProDisplay-Medium",
       color: "text",
     },
   },

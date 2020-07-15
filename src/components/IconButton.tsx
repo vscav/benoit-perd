@@ -6,7 +6,7 @@ import { useTheme } from "@shopify/restyle";
 import { Theme } from "./Theme";
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
     width: 50,
     height: 50,
     borderRadius: 50 / 2,
@@ -36,11 +36,14 @@ const IconButton = ({
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
   const color = variant === "primary" ? theme.colors.white : theme.colors.white;
   return active ? (
-    <View style={[styles.button, { backgroundColor }]}>
+    <View style={[styles.container, { backgroundColor }]}>
       <FontAwesome name={icon} size={size} color={color} />
     </View>
   ) : (
-    <RectButton style={[styles.button, { backgroundColor }]} {...{ onPress }}>
+    <RectButton
+      style={[styles.container, { backgroundColor }]}
+      {...{ onPress }}
+    >
       <FontAwesome name={icon} size={size} color={color} />
     </RectButton>
   );

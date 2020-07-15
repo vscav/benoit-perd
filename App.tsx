@@ -46,12 +46,10 @@ export default function App() {
   });
 
   const colorLayer = animationDone ? null : (
-    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#f89e4c" }]} />
+    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fff" }]} />
   );
   const whiteLayer = animationDone ? null : (
-    <View
-      style={[StyleSheet.absoluteFill, { backgroundColor: theme.colors.text }]}
-    />
+    <View style={[StyleSheet.absoluteFill, { backgroundColor: "#f89e4c" }]} />
   );
   const imageScale = {
     transform: [
