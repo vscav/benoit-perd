@@ -101,7 +101,6 @@ const Slider = () => {
           showsHorizontalScrollIndicator={false}
           bounces={false}
           {...scrollHandler}
-          // pinchGestureEnabled
           onScrollEndDrag={async () => {
             try {
               if (playingStatus === "playing") {
@@ -122,11 +121,6 @@ const Slider = () => {
               active={disabled}
               start={async () => {
                 try {
-                  // if (playingStatus === "playing") {
-                  //   await soundObject.stopAsync();
-                  //   await soundObject.unloadAsync();
-                  //   setPlayingStatus("stop");
-                  // }
                   const source = slides[index].sound;
                   await soundObject.loadAsync(source);
                   setPlayingStatus("playing");
