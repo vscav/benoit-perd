@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  View,
-  ImageRequireSource,
-} from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 
 import { Button, IconButton, Text } from "./components";
 
@@ -22,11 +16,6 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: "center",
   },
-  underlay: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
   overlay: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: "flex-end",
@@ -38,27 +27,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: width / 2,
   },
-  // picture: {
-  //   ...StyleSheet.absoluteFillObject,
-  //   width: undefined,
-  //   height: undefined,
-  //   borderBottomRightRadius: BORDER_RADIUS,
-  // },
 });
 
 interface SlideProps {
   title: string;
-  picture: {
-    src: ImageRequireSource;
-    width: number;
-    height: number;
-  };
   active: boolean;
   start: () => void;
   stop: () => void;
 }
 
-const Slide = ({ title, picture, active, start, stop }: SlideProps) => {
+const Slide = ({ title, active, start, stop }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
     { translateX: -width / 2 + 50 },
@@ -66,15 +44,6 @@ const Slide = ({ title, picture, active, start, stop }: SlideProps) => {
   ];
   return (
     <View style={styles.container}>
-      <View style={styles.underlay}>
-        <Image
-          source={picture.src}
-          style={{
-            width: width - BORDER_RADIUS,
-            height: (width - BORDER_RADIUS) * (picture.height / picture.width),
-          }}
-        />
-      </View>
       <View style={[styles.titleContainer, { transform }]}>
         <Text variant="hero">{title}</Text>
       </View>

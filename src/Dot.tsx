@@ -1,6 +1,5 @@
 import React from "react";
 import Animated, { Extrapolate, interpolate } from "react-native-reanimated";
-import { interpolateColor } from "react-native-redash";
 
 interface DotProps {
   index: number;

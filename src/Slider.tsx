@@ -1,7 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Dimensions, View, StyleSheet } from "react-native";
+import { Dimensions, View, StyleSheet, Image } from "react-native";
 import { interpolateColor, useScrollHandler } from "react-native-redash";
-import Animated, { multiply, divide } from "react-native-reanimated";
+import Animated, {
+  multiply,
+  divide,
+  interpolate,
+  Extrapolate,
+} from "react-native-reanimated";
 import { Audio } from "expo-av";
 
 import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
@@ -23,6 +28,13 @@ const styles = StyleSheet.create({
   slider: {
     height: SLIDE_HEIGHT,
     borderBottomRightRadius: BORDER_RADIUS,
+  },
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    borderBottomRightRadius: BORDER_RADIUS,
+    overflow: "hidden",
   },
   footer: {
     flex: 1,
@@ -57,6 +69,29 @@ const Slider = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
+        {slides.map(({ picture }, index) => {
+          const opacity = interpolate(x, {
+            inputRange: [
+              (index - 0.5) * width,
+              index * width,
+              (index + 0.5) * width,
+            ],
+            outputRange: [0, 1, 0],
+            extrapolate: Extrapolate.CLAMP,
+          });
+          return (
+            <Animated.View key={index} style={[styles.underlay, { opacity }]}>
+              <Image
+                source={picture.src}
+                style={{
+                  width: width - BORDER_RADIUS,
+                  height:
+                    (width - BORDER_RADIUS) * (picture.height / picture.width),
+                }}
+              />
+            </Animated.View>
+          );
+        })}
         <Animated.ScrollView
           ref={scroll}
           horizontal
@@ -79,10 +114,10 @@ const Slider = () => {
             }
           }}
         >
-          {slides.map(({ title, picture }, index) => (
+          {slides.map(({ title }, index) => (
             <Slide
               key={index}
-              {...{ title, picture }}
+              {...{ title }}
               active={disabled}
               start={async () => {
                 try {
