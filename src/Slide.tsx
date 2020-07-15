@@ -1,5 +1,11 @@
 import React from "react";
-import { Dimensions, Image, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  View,
+  ImageRequireSource,
+} from "react-native";
 
 import { Button, IconButton, Text } from "./components";
 
@@ -18,6 +24,7 @@ const styles = StyleSheet.create({
   },
   underlay: {
     ...StyleSheet.absoluteFillObject,
+    alignItems: "center",
     justifyContent: "flex-end",
   },
   overlay: {
@@ -31,17 +38,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: width / 2,
   },
-  picture: {
-    ...StyleSheet.absoluteFillObject,
-    width: undefined,
-    height: undefined,
-    borderBottomRightRadius: BORDER_RADIUS,
-  },
+  // picture: {
+  //   ...StyleSheet.absoluteFillObject,
+  //   width: undefined,
+  //   height: undefined,
+  //   borderBottomRightRadius: BORDER_RADIUS,
+  // },
 });
 
 interface SlideProps {
   title: string;
-  picture: number;
+  picture: {
+    src: ImageRequireSource;
+    width: number;
+    height: number;
+  };
   active: boolean;
   start: () => void;
   stop: () => void;
@@ -56,7 +67,13 @@ const Slide = ({ title, picture, active, start, stop }: SlideProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.underlay}>
-        <Image source={picture} style={styles.picture} />
+        <Image
+          source={picture.src}
+          style={{
+            width: width - BORDER_RADIUS,
+            height: (width - BORDER_RADIUS) * (picture.height / picture.width),
+          }}
+        />
       </View>
       <View style={[styles.titleContainer, { transform }]}>
         <Text variant="hero">{title}</Text>
