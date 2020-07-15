@@ -45,7 +45,7 @@ export default function App() {
     });
   });
 
-  const colorLayer = animationDone ? null : (
+  const coloredLayer = animationDone ? null : (
     <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fff" }]} />
   );
   const whiteLayer = animationDone ? null : (
@@ -72,7 +72,7 @@ export default function App() {
     <ThemeProvider {...{ theme }}>
       <LoadAssets {...{ fonts }}>
         <View style={{ flex: 1 }}>
-          {colorLayer}
+          {coloredLayer}
           <MaskedViewIOS
             style={{ flex: 1 }}
             maskElement={

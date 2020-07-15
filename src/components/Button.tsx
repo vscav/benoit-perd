@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 interface ButtonProps {
   label: string;
   variant: "default" | "primary";
-  active: boolean;
+  active?: boolean;
   onPress: () => void;
 }
 

@@ -9,7 +9,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { Audio } from "expo-av";
 
-// import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./Slide";
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 
 import Subslide from "./Subslide";
