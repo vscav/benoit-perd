@@ -3,10 +3,11 @@ import { View, StyleSheet, MaskedViewIOS, Animated } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider } from "@shopify/restyle";
 
-import Slider from "./src/Slider";
+import { About, Slider } from "./src";
 import { LoadAssets, theme } from "./src/components";
 
 import { fonts } from "./src/store";
+import { Routes } from "./src/routes/Routes";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,12 +21,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppStack = createStackNavigator();
+const AppStack = createStackNavigator<Routes>();
 
 const AppNavigator = () => {
   return (
     <AppStack.Navigator headerMode="none">
       <AppStack.Screen name="Slider" component={Slider} />
+      <AppStack.Screen name="About" component={About} />
     </AppStack.Navigator>
   );
 };

@@ -15,7 +15,7 @@ import Subslide from "./Subslide";
 import Dot from "./Dot";
 
 import { slides } from "./store";
-import { theme } from "./components";
+import { theme, IconButton } from "./components";
 
 const { width } = Dimensions.get("window");
 
@@ -44,6 +44,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     borderTopLeftRadius: theme.borderRadii.xl,
+  },
+  navigation: {
+    ...StyleSheet.absoluteFillObject,
+    height: 175,
+    width: width / 1.1,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
@@ -156,6 +164,14 @@ const Slider = () => {
           ))}
         </Animated.ScrollView>
       </Animated.View>
+      <View style={styles.navigation}>
+        <IconButton
+          icon="question"
+          variant="primary"
+          size={18}
+          onPress={() => alert("About button clicked")}
+        />
+      </View>
       <View style={styles.footer}>
         <Animated.View
           style={{

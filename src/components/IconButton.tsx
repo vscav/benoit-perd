@@ -19,7 +19,7 @@ interface IconButtonProps {
   icon: string;
   variant: "default" | "primary";
   size: number;
-  active: boolean;
+  active?: boolean;
   onPress: () => void;
 }
 
