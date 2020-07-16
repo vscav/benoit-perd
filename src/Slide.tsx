@@ -57,6 +57,7 @@ const Slide = ({ title, active, start, stop }: SlideProps) => {
           <IconButton
             icon="stop"
             variant="primary"
+            fill={true}
             size={14}
             onPress={stop}
             active={active}

@@ -7,7 +7,7 @@ import { About, Slider } from "./src";
 import { LoadAssets, theme } from "./src/components";
 
 import { fonts } from "./src/store";
-import { Routes } from "./src/routes/Routes";
+import { Routes } from "./src/routes/Navigation";
 
 const styles = StyleSheet.create({
   container: {

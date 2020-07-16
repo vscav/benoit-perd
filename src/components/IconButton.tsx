@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
 interface IconButtonProps {
   icon: string;
   variant: "default" | "primary";
+  fill: boolean;
   size: number;
   active?: boolean;
   onPress: () => void;
@@ -26,6 +27,7 @@ interface IconButtonProps {
 const IconButton = ({
   icon,
   variant,
+  fill,
   size,
   active,
   onPress,
@@ -34,6 +36,7 @@ const IconButton = ({
   let backgroundColor =
     variant === "primary" ? theme.colors.primary : theme.colors.text;
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
+  backgroundColor = fill ? backgroundColor : "transparent";
   const color = variant === "primary" ? theme.colors.white : theme.colors.white;
   return active ? (
     <View style={[styles.container, { backgroundColor }]}>

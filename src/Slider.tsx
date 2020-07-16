@@ -16,6 +16,7 @@ import Dot from "./Dot";
 
 import { slides } from "./store";
 import { theme, IconButton } from "./components";
+import { Routes, StackNavigationProps } from "./routes/Navigation";
 
 const { width } = Dimensions.get("window");
 
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Slider = () => {
+const Slider = ({ navigation }: StackNavigationProps<Routes, "Slider">) => {
   const [playingStatus, setPlayingStatus] = useState("stop");
   const [disabled, setDisabled] = useState(true);
 
@@ -169,7 +170,8 @@ const Slider = () => {
           icon="question"
           variant="primary"
           size={18}
-          onPress={() => alert("About button clicked")}
+          fill={false}
+          onPress={() => navigation.navigate("About")}
         />
       </View>
       <View style={styles.footer}>
