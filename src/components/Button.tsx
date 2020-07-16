@@ -31,7 +31,7 @@ const Button = ({ variant, label, active, onPress }: ButtonProps) => {
       : theme.colors.grey;
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
   const color =
-    variant === "primary" ? theme.colors.white : theme.colors.button;
+    variant === "primary" ? theme.colors.white : theme.colors.secondary;
   return active ? (
     <View style={[styles.container, { backgroundColor }]}>
       <Text variant="button" style={{ color }}>

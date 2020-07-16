@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, MaskedViewIOS, Animated } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider } from "@shopify/restyle";
-
-import { About, Slider } from "./src";
+import { assets as appAssets, AppNavigator } from "./src";
 import { LoadAssets, theme } from "./src/components";
-
 import { fonts } from "./src/store";
-import { Routes } from "./src/routes/Navigation";
+
+const assets = [...appAssets];
 
 const styles = StyleSheet.create({
   container: {
@@ -20,17 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-const AppStack = createStackNavigator<Routes>();
-
-const AppNavigator = () => {
-  return (
-    <AppStack.Navigator headerMode="none">
-      <AppStack.Screen name="Slider" component={Slider} />
-      <AppStack.Screen name="About" component={About} />
-    </AppStack.Navigator>
-  );
-};
 
 export default function App() {
   const [loadingProgress] = useState(new Animated.Value(0));
@@ -72,7 +59,7 @@ export default function App() {
   };
   return (
     <ThemeProvider {...{ theme }}>
-      <LoadAssets {...{ fonts }}>
+      <LoadAssets {...{ fonts, assets }}>
         <View style={{ flex: 1 }}>
           {coloredLayer}
           <MaskedViewIOS

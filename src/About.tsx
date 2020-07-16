@@ -1,20 +1,24 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { Routes, StackNavigationProps } from "./routes/Navigation";
-import { Button } from "./components";
 
-const styles = StyleSheet.create({});
+import { Container, Button, Box } from "./components";
 
 const About = ({ navigation }: StackNavigationProps<Routes, "About">) => {
   return (
-    <View>
-      <Text>About page</Text>
-      <Button
-        label="Retour"
-        variant="transparent"
-        onPress={() => navigation.navigate("Slider")}
-      />
-    </View>
+    <Container
+      footer={
+        <Box alignItems="center">
+          <Button
+            label="Fermer"
+            variant="primary"
+            onPress={() => navigation.navigate("Slider")}
+          />
+        </Box>
+      }
+    >
+      <View />
+    </Container>
   );
 };
 

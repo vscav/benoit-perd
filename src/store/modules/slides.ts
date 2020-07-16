@@ -52,3 +52,5 @@ export const slides = [
     sound: require("../../../assets/sounds/4.wav"),
   },
 ];
+
+export const assets = slides.map((slide) => slide.picture.src);
