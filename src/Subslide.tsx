@@ -10,13 +10,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 44,
+    paddingTop: 60,
   },
   subtitle: {
-    marginBottom: 12,
+    marginBottom: 10,
     textAlign: "center",
   },
   description: {
-    marginBottom: 40,
+    marginBottom: 25,
     textAlign: "center",
   },
   controlsContainer: {

@@ -24,7 +24,10 @@ const styles = StyleSheet.create({
   controlsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: width / 2,
+    width: width / 1.8,
+  },
+  control: {
+    margin: 5,
   },
 });
 
@@ -48,20 +51,25 @@ const Slide = ({ title, active, start, stop }: SlideProps) => {
       </View>
       <View style={styles.overlay}>
         <View style={styles.controlsContainer}>
-          <Button
-            label="Écouter"
-            variant="primary"
-            onPress={start}
-            active={!active}
-          />
-          <IconButton
-            icon="stop"
-            variant="primary"
-            fill={true}
-            size={14}
-            onPress={stop}
-            active={active}
-          />
+          <View style={styles.control}>
+            <Button
+              label="Écouter"
+              variant="primary"
+              onPress={start}
+              active={!active}
+            />
+          </View>
+          <View style={styles.control}>
+            <IconButton
+              icon="stop"
+              variant="primary"
+              fill={true}
+              height={50}
+              size={14}
+              onPress={stop}
+              active={active}
+            />
+          </View>
         </View>
       </View>
     </View>

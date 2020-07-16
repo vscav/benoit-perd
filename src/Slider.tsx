@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
   },
   navigation: {
     ...StyleSheet.absoluteFillObject,
-    height: 175,
-    width: width / 1.1,
+    height: 130,
+    width: width / 1.05,
     flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "center",
@@ -169,6 +169,7 @@ const Slider = ({ navigation }: StackNavigationProps<Routes, "Slider">) => {
         <IconButton
           icon="question"
           variant="primary"
+          height={30}
           size={18}
           fill={false}
           onPress={() => navigation.navigate("About")}

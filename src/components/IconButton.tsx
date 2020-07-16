@@ -7,9 +7,6 @@ import { Theme } from "./Theme";
 
 const styles = StyleSheet.create({
   container: {
-    width: 50,
-    height: 50,
-    borderRadius: 50 / 2,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -19,6 +16,7 @@ interface IconButtonProps {
   icon: string;
   variant: "default" | "primary";
   fill: boolean;
+  height: number;
   size: number;
   active?: boolean;
   onPress: () => void;
@@ -28,6 +26,7 @@ const IconButton = ({
   icon,
   variant,
   fill,
+  height,
   size,
   active,
   onPress,
@@ -38,13 +37,39 @@ const IconButton = ({
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
   backgroundColor = fill ? backgroundColor : "transparent";
   const color = variant === "primary" ? theme.colors.white : theme.colors.white;
+  const borderWidth = backgroundColor === "transparent" ? 3 : 0;
+  const borderColor = theme.colors.white;
+  const width = height;
+  const borderRadius = width / 2;
   return active ? (
-    <View style={[styles.container, { backgroundColor }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          height,
+          width,
+          borderRadius,
+          backgroundColor,
+          borderWidth,
+          borderColor,
+        },
+      ]}
+    >
       <FontAwesome name={icon} size={size} color={color} />
     </View>
   ) : (
     <RectButton
-      style={[styles.container, { backgroundColor }]}
+      style={[
+        styles.container,
+        {
+          height,
+          width,
+          borderRadius,
+          backgroundColor,
+          borderWidth,
+          borderColor,
+        },
+      ]}
       {...{ onPress }}
     >
       <FontAwesome name={icon} size={size} color={color} />

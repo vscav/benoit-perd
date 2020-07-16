@@ -1,7 +1,7 @@
 export const slides = [
   {
     title: "#*!?",
-    subtitle: "Terre battue dans les chaussettes",
+    subtitle: "Free Benoît",
     description:
       "Morbi tristique elementum cursus. Proin vitae neque bibendum, fringilla metus.",
     color: "#f89e4c",
@@ -14,9 +14,9 @@ export const slides = [
   },
   {
     title: "@&!*",
-    subtitle: "Soleil dans les yeux",
+    subtitle: "Miaouu",
     description:
-      "Donec porttitor ligula id condimentum imperdiet. Nullam consequat molestie risus in rutrum.",
+      "Morbi tristique elementum cursus. Proin vitae neque bibendum, fringilla metus.",
     color: "#f46e38",
     picture: {
       src: require("../../../assets/images/2.png"),
@@ -27,9 +27,9 @@ export const slides = [
   },
   {
     title: "**!@",
-    subtitle: "Spectateur bavard",
+    subtitle: "Satané Benny",
     description:
-      "Proin ut turpis a orci ultricies dictum. Nunc posuere libero quis diam euismod, eu aliquam risus egestas.",
+      "Morbi tristique elementum cursus. Proin vitae neque bibendum, fringilla metus.",
     color: "#f04647",
     picture: {
       src: require("../../../assets/images/3.png"),
@@ -40,9 +40,9 @@ export const slides = [
   },
   {
     title: "@$*!#",
-    subtitle: "Faux rebond",
+    subtitle: "Arbitre coquin",
     description:
-      "Morbi sem erat, pretium vel fermentum quis, tincidunt sit amet neque.",
+      "Morbi tristique elementum cursus. Proin vitae neque bibendum, fringilla metus.",
     color: "#582841",
     picture: {
       src: require("../../../assets/images/4.png"),
