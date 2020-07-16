@@ -11,7 +11,7 @@ const About = ({ navigation }: StackNavigationProps<Routes, "About">) => {
       <Text>About page</Text>
       <Button
         label="Retour"
-        variant="default"
+        variant="transparent"
         onPress={() => navigation.navigate("Slider")}
       />
     </View>

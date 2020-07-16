@@ -5,6 +5,7 @@ const theme = {
     primary: "#2cb9b0",
     title: "#0c0d34",
     text: "rgba(12, 13, 52, .7)",
+    button: "#0c0d34",
     white: "#fff",
     grey: "rgba(12, 13, 52, .05)",
     disabled: "rgba(12, 13, 52, .5)",

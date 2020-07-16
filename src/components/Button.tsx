@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
 interface ButtonProps {
   label: string;
-  variant: "default" | "primary";
+  variant: "default" | "primary" | "transparent";
   active?: boolean;
   onPress: () => void;
 }
@@ -24,9 +24,14 @@ interface ButtonProps {
 const Button = ({ variant, label, active, onPress }: ButtonProps) => {
   const theme = useTheme<Theme>();
   let backgroundColor =
-    variant === "primary" ? theme.colors.primary : theme.colors.grey;
+    variant === "primary"
+      ? theme.colors.primary
+      : variant === "transparent"
+      ? "transparent"
+      : theme.colors.grey;
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
-  const color = variant === "primary" ? theme.colors.white : theme.colors.text;
+  const color =
+    variant === "primary" ? theme.colors.white : theme.colors.button;
   return active ? (
     <View style={[styles.container, { backgroundColor }]}>
       <Text variant="button" style={{ color }}>
