@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { StyleSheet, Image, Dimensions } from "react-native";
 import theme, { Box } from "./Theme";
 
-export const assets = [require("../../assets/images/patterns/1.png")];
+export const assets = [require("../../assets/images/patterns/2.png")];
 const { width } = Dimensions.get("window");
 const aspectRatio = 750 / 1125;
 const height = width * aspectRatio;
@@ -50,7 +50,9 @@ const Container = ({ children, footer }: ContainerProps) => {
           {children}
         </Box>
       </Box>
-      <Box backgroundColor="secondary">{footer}</Box>
+      <Box backgroundColor="secondary" padding="xl">
+        {footer}
+      </Box>
     </Box>
   );
 };
