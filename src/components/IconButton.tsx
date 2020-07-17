@@ -32,6 +32,7 @@ const IconButton = ({
   onPress,
 }: IconButtonProps) => {
   const theme = useTheme<Theme>();
+
   let backgroundColor =
     variant === "primary" ? theme.colors.primary : theme.colors.text;
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
@@ -41,6 +42,7 @@ const IconButton = ({
   const borderColor = theme.colors.white;
   const width = height;
   const borderRadius = width / 2;
+
   return active ? (
     <View
       style={[

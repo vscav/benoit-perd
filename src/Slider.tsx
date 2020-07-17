@@ -10,12 +10,13 @@ import Animated, {
 import { Audio } from "expo-av";
 
 import Slide, { SLIDE_HEIGHT } from "./Slide";
-
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 
-import { slides } from "./store";
 import { theme, IconButton } from "./components";
+
+import { slides } from "./store";
+
 import { Routes, StackNavigationProps } from "./routes/Navigation";
 
 const { width } = Dimensions.get("window");

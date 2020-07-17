@@ -3,6 +3,7 @@ import { StyleSheet, Image, Dimensions } from "react-native";
 import theme, { Box } from "./Theme";
 
 export const assets = [require("../../assets/images/patterns/2.png")];
+
 const { width } = Dimensions.get("window");
 const aspectRatio = 750 / 1125;
 const height = width * aspectRatio;

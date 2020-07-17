@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { useTheme } from "@shopify/restyle";
+
 import { Theme, Text } from "./Theme";
 
 const styles = StyleSheet.create({
@@ -23,6 +24,7 @@ interface ButtonProps {
 
 const Button = ({ variant, label, active, onPress }: ButtonProps) => {
   const theme = useTheme<Theme>();
+
   let backgroundColor =
     variant === "primary"
       ? theme.colors.primary
@@ -32,6 +34,7 @@ const Button = ({ variant, label, active, onPress }: ButtonProps) => {
   backgroundColor = active ? theme.colors.disabled : backgroundColor;
   const color =
     variant === "primary" ? theme.colors.white : theme.colors.secondary;
+
   return active ? (
     <View style={[styles.container, { backgroundColor }]}>
       <Text variant="button" style={{ color }}>

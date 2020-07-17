@@ -53,4 +53,7 @@ export const slides = [
   },
 ];
 
-export const assets = slides.map((slide) => slide.picture.src);
+const pictures = slides.map((slide) => slide.picture.src);
+const sounds = slides.map((slide) => slide.sound);
+
+export const assets = [...pictures, ...sounds];

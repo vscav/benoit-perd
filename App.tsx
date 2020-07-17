@@ -37,9 +37,11 @@ export default function App() {
   const coloredLayer = animationDone ? null : (
     <View style={[StyleSheet.absoluteFill, { backgroundColor: "#fff" }]} />
   );
+
   const whiteLayer = animationDone ? null : (
     <View style={[StyleSheet.absoluteFill, { backgroundColor: "#f89e4c" }]} />
   );
+
   const imageScale = {
     transform: [
       {
@@ -50,6 +52,7 @@ export default function App() {
       },
     ],
   };
+
   const opacity = {
     opacity: loadingProgress.interpolate({
       inputRange: [0, 25, 50],
@@ -57,6 +60,7 @@ export default function App() {
       extrapolate: "clamp",
     }),
   };
+
   return (
     <ThemeProvider {...{ theme }}>
       <LoadAssets {...{ fonts, assets }}>

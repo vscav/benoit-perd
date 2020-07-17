@@ -44,6 +44,7 @@ const Slide = ({ title, active, start, stop }: SlideProps) => {
     { translateX: -width / 2 + 50 },
     { rotate: "90deg" },
   ];
+
   return (
     <View style={styles.container}>
       <View style={[styles.titleContainer, { transform }]}>
