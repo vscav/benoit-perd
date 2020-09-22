@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Routes, StackNavigationProps } from "./routes/Navigation";
+import { Routes, StackNavigationProps } from "./routes/routes";
 
 import { Container, Button, Box } from "./components";
 
